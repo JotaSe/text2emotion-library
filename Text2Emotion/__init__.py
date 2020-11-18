@@ -4,10 +4,14 @@ import re
 import emoji
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+import os
 
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+nltk_data_path = os.getenv('NLTK_DATA')
+nltk_data_path = nltk.data.path[0] if nltk_data_path is None else nltk_data_path
+
+nltk.download('stopwords', download_dir = nltk_data_path)
+nltk.download('punkt', download_dir = nltk_data_path)
+nltk.download('wordnet', download_dir = nltk_data_path)
 
 
 def removing_shortcuts(text):
